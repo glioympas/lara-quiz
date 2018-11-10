@@ -50,7 +50,7 @@ class HomeController extends Controller
     	$quiz->save();
     	$score = number_format((float)$score, 2, '.', ''); //2 digits
 
-    	
+
     	return response()->json(['correctAnswers' => $correctAnswers , 'score' => $score]);
 
     }
@@ -64,7 +64,7 @@ class HomeController extends Controller
     public function createPost(Request $request)
     {
     	//some custom validation
-    	$existedQuiz = Quiz::whereTitle($request->quizTitle)->first();
+    	$existedQuiz = Quiz::whereTitle(strtoupper($request->quizTitle))->first();
     	if($existedQuiz){
     		return response()->json(['quiz_exists'=>1]);
     	}

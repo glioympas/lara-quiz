@@ -165,7 +165,7 @@
 				errors.forEach(function(err){
 					$('.errors').append(`<div class="alert alert-danger"> ${err} </div>`)
 				})
-				$(this).prop('disabled',false);
+				$('.submit-quiz').prop('disabled',false);
 				return;
 				
 			}
@@ -179,6 +179,7 @@
 					if(response.quiz_exists)
 					{
 						$('.errors').append(`<div class="alert alert-danger"> Quiz with that name already exists. </div>`)
+						$('.submit-quiz').prop('disabled',false);
 						return;
 					}
 
@@ -189,8 +190,9 @@
 				},
 				error: function(error)
 				{
-					$('html').html(error.responseText)
-					$(this).prop('disabled',false);
+					//console.log(error.responseYext);
+					alert('Something gone bad?');
+					$('.submit-quiz').prop('disabled',false);
 				}
 			});
 
